@@ -4,7 +4,7 @@
 " boolean flag: is concealment active?
 let g:column_conceal = 0
 " number of characters to show
-let g:column_cell_truncate_width = 8
+let g:column_cell_truncate_width = '8'
 " column separator
 let g:column_sep_char = '\t'
 
@@ -38,7 +38,7 @@ function! IncrementColumnTruncateWidth() abort
 endfunction
 
 function! DecrementColumnTruncateWidth() abort
-    if g:column_cell_truncate_width >= 1
+    if g:column_cell_truncate_width > 1
         let g:column_cell_truncate_width -= 1
         call ColumnTruncateRefresh()
     endif
@@ -47,12 +47,12 @@ endfunction
 function! SetColumnTruncateWidth() abort
     let g:column_cell_truncate_width = inputdialog(
             \ "Set truncation width to: ", "", g:column_cell_truncate_width)
-    if g:column_cell_truncate_width !~? '^[1-9]*[0-9]\+$'
+    if g:column_cell_truncate_width !~? '^[1-9]\+[0-9]*$'
         echohl ErrorMsg
         redraw | echomsg "invalid value " .
-            \ g:column_cell_truncate_width . ", setting to 4"
+            \ g:column_cell_truncate_width . ", setting to 8"
         echohl None
-        let g:column_cell_truncate_width = '4'
+        let g:column_cell_truncate_width = '8'
     endif
     call ColumnTruncateRefresh()
 endfunction
