@@ -18,7 +18,8 @@ the separation character is obviously just treated as a big cell.
 
 There is a sample file in this repository. If you navigate to this directory and
 type `make`, an instance of Vim will launch that loads `column_conceal.vim`, and
-opens sample.txt.
+opens sample.txt. `make clean_test` tries to do the same with `vim --clean`,
+ignoring your vimrc.
 
 The mappings `y>` and `y<` allow you to type `y>>>>>` or `y<<>>>>>`, for
 example. This mode can be escaped with `<Esc>`, or in fact any key other than

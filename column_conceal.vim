@@ -74,6 +74,17 @@ function! ToggleCommaSeparated() abort
     call ColumnTruncateRefresh()
 endfunction
 
+function! GetTableColumn() abort
+    let line = getline(".")[:col(".") - 1][:-2]
+    if g:column_sep_char == '\t'
+        return count(line, "\<Tab>") + 1
+    else
+        return count(line, ",") + 1
+    endif
+endfunction
+
+set ruler
+set rulerformat=tab:%{GetTableColumn()},l:%l,c:%c
 set concealcursor=nc
 
 nnoremap yoc :call ToggleConcealCursorN()<CR>
